@@ -1,0 +1,18 @@
+
+---
+- name: Deploy Nginx Docker Container
+  hosts: local
+  become: true
+
+  tasks:
+    - name: Pull Nginx Docker image
+      docker_image:
+        name: nginx:latest
+        source: pull
+
+    - name: Run Nginx Docker container
+      docker_container:
+        name: server1
+        image: nginx:latest
+        ports:
+          - "8091:80"

@@ -1,0 +1,10 @@
+---
+- name: Clean up Nginx Docker Container
+  hosts: local
+  become: true
+
+  tasks:
+    - name: Stop and remove Nginx Docker container
+      docker_container:
+        name: server1
+        state: absent
